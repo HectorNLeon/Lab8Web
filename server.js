@@ -57,7 +57,7 @@ app.get('/blog-posts',(req, res, next) => {
     });
 });
 
-app.get('/blog-post',(req, res, next) => {
+app.get('/api/blog-post',(req, res, next) => {
     if(req.query.author == undefined)
         return res.status(406).json("Missing author");
     PostList.getbyA(req.query.author).then(posts => {
@@ -71,7 +71,7 @@ app.get('/blog-post',(req, res, next) => {
     });
 });
 
-app.post('/blog-posts', jsonParser, (req, res, next)=>{
+app.post('/api/blog-posts', jsonParser, (req, res, next)=>{
     if(req.body.title && req.body.content && req.body.author && req.body.publishDate){
         let nPost = req.body;
         nPost.id = uuidv4();
@@ -95,7 +95,7 @@ app.post('/blog-posts', jsonParser, (req, res, next)=>{
     }
 });
 
-app.delete('/blog-posts/:id', (req, res, next)=>{
+app.delete('/api/blog-posts/:id', (req, res, next)=>{
     PostList.del(req.params.id).then(mess => {
         return res.status(200).json("Success!");
     }).catch( error => {
@@ -108,7 +108,7 @@ app.delete('/blog-posts/:id', (req, res, next)=>{
     return res.status(404).send("That id doesn't exist");
 });
 
-app.put('/blog-posts/:id', jsonParser, (req, res, next)=>{
+app.put('/api/blog-posts/:id', jsonParser, (req, res, next)=>{
     if(req.body.id){
         let post = req.body;
         if(post.id != req.params.id)

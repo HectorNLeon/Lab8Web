@@ -10,7 +10,7 @@ function watchForm(){
         e.preventDefault();
         $.ajax({
             type : 'POST',
-            url: '/blog-posts',
+            url: '/api/blog-posts',
             contentType: "application/json",
             data: JSON.stringify(body)
         }).done(function(data){
@@ -56,7 +56,7 @@ function watchForm(){
             body.publishDate = postD[4].value;
         $.ajax({
             type : 'PUT',
-            url: '/blog-posts/'+body.id,
+            url: '/api/blog-posts/'+body.id,
             contentType: "application/json",
             data: JSON.stringify(body)
         }).done(function(data){
@@ -72,7 +72,7 @@ function loadList(){
     $("#blogList").html("");
     $.ajax({
         type: 'GET',
-        url: '/blog-posts'
+        url: '/api/blog-posts'
     }).done(function(data){
         for(let i=0; i<data.length; i++){
             $("#blogList").append("<li>"+JSON.stringify(data[i])+"</li>");
