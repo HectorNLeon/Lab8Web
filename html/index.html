@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #forms{display: flex; flex-direction: row}
+    </style>
+    <tittle>Blog Posts</tittle>
+</head>
+
+<body>
+    <div id="forms">
+        <section>
+            <div>
+                <label class="form"> title </label>
+                <input type="text" class="post">
+            </div>
+            <div>
+                <label class="form"> content </label>
+                <input type="text" class="post">
+            </div>
+            <div>
+                <label class="form"> author </label>
+                <input type="text" class="post"> 
+            </div>
+            <div>
+                <label class="form"> date </label>
+                <input type="text" class="post">    
+            </div>
+            <button type="submit" id="postButton">
+                POST
+            </button>
+        </section>
+        <section>
+            <div>
+                <label class="form"> Id </label>
+                <input type="text" class="del">
+            </div>
+            <button type="submit" id="delButton">
+                DELETE
+            </button>
+        </section>
+        <section>
+            <div>
+                <label class="form"> Id </label>
+                <input type="text" class="update">        
+            </div>
+            <div>
+                <label class="form"> title </label>
+                <input type="text" class="update">
+            </div>
+            <div>
+                <label class="form"> content </label>
+                <input type="text" class="update">
+            </div>
+            <div>
+                <label class="form"> author </label>
+                <input type="text" class="update"> 
+            </div>
+            <div>
+                <label class="form"> date </label>
+                <input type="text" class="update">    
+            </div>
+            <button type="submit" id="updateButton">
+                UPDATE
+            </button>
+        </section>
+    </div>
+    
+    
+    <ul id="blogList">
+        
+    </ul>
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script src="./js/index.js" type="text/javascript"> </script>
+</html>
