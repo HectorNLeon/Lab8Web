@@ -61,6 +61,8 @@ app.get('/api/blog-post',(req, res, next) => {
     if(req.query.author == undefined)
         return res.status(406).json("Missing author");
     PostList.getbyA(req.query.author).then(posts => {
+        if(posts.length == 0)
+            return res.status(404).json("Author not found");
         return res.status(200).json(posts);
     }).catch( error => {
         res.statusMessage = "Something went wrong with the DB. Try again later.";
@@ -77,9 +79,9 @@ app.post('/api/blog-posts', jsonParser, (req, res, next)=>{
         nPost.id = uuidv4();
         PostList.post(nPost).then(post => {
             
-            return res.status(200).json({
+            return res.status(201).json({
 				message : "Post added!",
-				status : 200,
+				status : 201,
 				post : post
 			});
         }).catch( error => {
@@ -105,7 +107,6 @@ app.delete('/api/blog-posts/:id', (req, res, next)=>{
             message : "Something went wrong with the DB. Try again later."
         })
     });
-    return res.status(404).send("That id doesn't exist");
 });
 
 app.put('/api/blog-posts/:id', jsonParser, (req, res, next)=>{
