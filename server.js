@@ -6,11 +6,11 @@ let jsonParser = bodyParser.json();
 let app = express();
 let moment = require('moment');
 const uuidv4 = require('uuid/v4');
-let { PostList } = require('./model');
+let { PostList } = require('./blog-post-model');
 let { DATABASE_URL, PORT } = require('./config');
 
 
-app.use(cors());
+app.use(cors());    
 app.use(express.static('public'));
 app.use( morgan( 'dev' ) );
 
