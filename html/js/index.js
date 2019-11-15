@@ -10,7 +10,7 @@ function watchForm(){
         e.preventDefault();
         $.ajax({
             type : 'POST',
-            url: 'http://localhost:8080/blog-posts',
+            url: '/blog-posts',
             contentType: "application/json",
             data: JSON.stringify(body)
         }).done(function(data){
@@ -29,7 +29,7 @@ function watchForm(){
         else{
             $.ajax({
                 type : 'DELETE',
-                url: 'http://localhost:8080/blog-posts/'+$(".del").val()
+                url: '/api/blog-posts/'+$(".del").val()
             }).done(function(data){
                 console.log(data);
                 loadList();
@@ -56,7 +56,7 @@ function watchForm(){
             body.publishDate = postD[4].value;
         $.ajax({
             type : 'PUT',
-            url: 'http://localhost:8080/blog-posts/'+body.id,
+            url: '/blog-posts/'+body.id,
             contentType: "application/json",
             data: JSON.stringify(body)
         }).done(function(data){
@@ -72,7 +72,7 @@ function loadList(){
     $("#blogList").html("");
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:8080/blog-posts'
+        url: '/blog-posts'
     }).done(function(data){
         for(let i=0; i<data.length; i++){
             $("#blogList").append("<li>"+JSON.stringify(data[i])+"</li>");

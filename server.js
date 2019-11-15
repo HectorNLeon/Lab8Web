@@ -10,6 +10,7 @@ let { PostList } = require('./blog-post-model');
 let { DATABASE_URL, PORT } = require('./config');
 let mongoose = require('mongoose');
 
+mongoose.Promise = global.Promise;
 
 app.use(cors());    
 app.use(express.static('public'));
@@ -76,7 +77,6 @@ app.post('/blog-posts', jsonParser, (req, res, next)=>{
     if(req.body.title && req.body.content && req.body.author && req.body.publishDate){
         let nPost = req.body;
         nPost.id = uuidv4();
-        posts.push(nPost);
         PostList.post(nPost).then(post => {
             
             return res.status(200).json({
