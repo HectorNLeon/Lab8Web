@@ -99,7 +99,9 @@ app.post('/api/blog-posts', jsonParser, (req, res, next)=>{
 
 app.delete('/api/blog-posts/:id', (req, res, next)=>{
     PostList.del(req.params.id).then(mess => {
-        return res.status(200).json(mess);
+        if(mess.deletedCount == 0)
+            return res.status(404).send("That id doesn't exist");
+        return res.status(200).json("Success!");
     }).catch( error => {
         res.statusMessage = "Something went wrong with the DB. Try again later.";
         return res.status( 500 ).json({
