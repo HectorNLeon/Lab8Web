@@ -8,6 +8,7 @@ let moment = require('moment');
 const uuidv4 = require('uuid/v4');
 let { PostList } = require('./blog-post-model');
 let { DATABASE_URL, PORT } = require('./config');
+let mongoose = require('mongoose');
 
 
 app.use(cors());    
