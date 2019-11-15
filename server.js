@@ -1,7 +1,6 @@
 let express = require('express');
 let morgan = require('morgan');
 let bodyParser = require('body-parser');
-var cors = require('cors');
 let jsonParser = bodyParser.json();
 let app = express();
 let moment = require('moment');
@@ -12,9 +11,8 @@ let mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-app.use(cors());    
-app.use(express.static('public'));
-app.use( morgan( 'dev' ) );
+app.use(express.static("public"));
+app.use( morgan( "dev" ) );
 
 let postss = [
 	{
